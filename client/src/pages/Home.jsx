@@ -7,19 +7,17 @@ function Home() {
     const [pagination, setPagination] = useState([]);
     const [activePage, setActivePage] = useState(1);
 
-    const [shops, setShops] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-
+    
+    const [shops, setShops] = useState([]);
     const [shopName, setShopName] = useState("");
-    const [adminEmail, setAdminEmail] = useState("");
     const [productName, setProductName] = useState("");
     const [stock, setStock] = useState("");
 
     const [body, setBody] = useState({
         params: {
             shopName: shopName,
-            adminEmail: adminEmail,
             productName: productName,
             stock: stock,
             page: activePage
@@ -31,7 +29,6 @@ function Home() {
         setBody({
             params: {
                 shopName: shopName,
-                adminEmail: adminEmail,
                 productName: productName,
                 stock: stock,
                 page: activePage
@@ -44,7 +41,6 @@ function Home() {
         setBody({
             params: {
                 shopName: shopName,
-                adminEmail: adminEmail,
                 productName: productName,
                 stock: stock,
                 page: pageSelect
@@ -52,11 +48,6 @@ function Home() {
         })
     }
 
-    useEffect(() => {
-
-    }, [])
-
-    //fetch data
     useEffect(() => {
         const fetchShops = async () => {
             try {
