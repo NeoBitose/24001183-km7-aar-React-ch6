@@ -13,7 +13,7 @@ function Home() {
 
     const [body, setBody] = useState({
         params: {
-            page: 1
+            page: activePage
         }
     })
 
@@ -26,16 +26,22 @@ function Home() {
         })
     }
 
+    useEffect(() => {
+
+    }, [])
+
     //fetch data
     useEffect(() => {
         const fetchShops = async () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/v1/shops', body)
-                // console.log(response)
+                console.log(response)
                 const data = response.data
+                console.log(data.isSuccess)
                 if (data.isSuccess) {
                     setShops(data.data.shops.rows)
                     setPage(data.data.totalPages)
+                    setActivePage(parseInt(data.data.page))
                 }
                 else {
                     setError("error")
